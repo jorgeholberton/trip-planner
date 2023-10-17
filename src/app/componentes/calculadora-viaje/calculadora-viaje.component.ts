@@ -1,4 +1,4 @@
-import { Component,EventEmitter,Input,Output,ViewChild, AfterViewInit  } from '@angular/core';
+import { Component,EventEmitter,Input,Output  } from '@angular/core';
 import { Router } from '@angular/router';
 import {ActivatedRoute } from '@angular/router';
 import { ViajeInputComponent } from '../viaje-input/viaje-input.component';
@@ -10,38 +10,34 @@ import { ViajeInputComponent } from '../viaje-input/viaje-input.component';
 })
 export class CalculadoraViajeComponent
 {
- 
- 
-  /* constructor(private router: Router,private route: ActivatedRoute,) {
+   constructor(private router: Router,private route: ActivatedRoute,) {
     // ...
   }
-*/
+
   datos: any | undefined;
   @Input() distancia: number | undefined;
   @Input() consumo: number | undefined;
   @Input() costoCombustible: number | undefined;
   @Input() costoPeaje: number | undefined;
-  @Input() tiempoEstimadoViaje: number | undefined; 
+  tiempoEstimadoViaje: number | undefined; 
   velocidadPromedio: number = 60;
   costoTotal: number | undefined; 
 
    @Output() enviarTiempo = new EventEmitter<any>(); 
 
   calcularViaje($event: any) 
-  {
-      /* if (this.distancia && this.consumo && this.costoCombustible && this.costoPeaje) 
+  {   
+     this.datos=$event; 
+     if (this.datos.distancia && this.datos.consumo && this.datos.costoCombustible && this.datos.costoPeaje)  
       {
-        tiempoEstimadoViaje = this.distancia / this.velocidadPromedio;
-        this.costoTotal = (this.distancia / this.consumo) * this.costoCombustible + this.costoPeaje;
+        this.tiempoEstimadoViaje = this.datos.distancia / this.velocidadPromedio;
+        this.costoTotal = (this.datos.distancia /this.datos.consumo) * this.datos.costoCombustible + this.datos.costoPeaje;
       }
-      console.log(tiempoEstimadoViaje);
-      this.enviarTiempo.emit(tiempoEstimadoViaje); 
-      this.router.navigate(['/aviso-descanso', tiempoEstimadoViaje]); */
-      this.datos=$event;
-      this.datos=this.datos;
-      console.log(this.datos);
+      
+      this.enviarTiempo.emit(this.tiempoEstimadoViaje); 
+      this.router.navigate(['/aviso-descanso/: this.tiempoEstimadoViaje']); 
+      this.datos=[$event]; 
+      this.datos=[...this.datos]; 
     } 
-
-   
 }
 

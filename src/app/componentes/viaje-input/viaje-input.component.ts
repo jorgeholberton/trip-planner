@@ -26,14 +26,12 @@ export class ViajeInputComponent
   
   redatosViaje() 
   {
-    
-     const datosViaje = 
+         const datosViaje = 
     {
       distancia: this.distancia,
       consumo: this.consumo,
       costoCombustible: this.costoCombustible,
-      costoPeaje: this.costoPeaje,
-      velocidadPromedio: this.velocidadPromedio
+      costoPeaje: this.costoPeaje
     };
 
     this.enviarDatos.emit(datosViaje);
