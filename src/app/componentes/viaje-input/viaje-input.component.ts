@@ -35,7 +35,8 @@ export class ViajeInputComponent
     };
 
     this.enviarDatos.emit(datosViaje);
-    this.router.navigate(['/calculadora-viaje/:datosViaje']); 
+    /* this.router.navigate(['/calculadora-viaje/:datosViaje']);  */
+    this.router.navigate(['/calculadora-viaje', datosViaje]);
     console.log("iniciando",datosViaje); 
     this.calculadora.calcularViaje(datosViaje);
     

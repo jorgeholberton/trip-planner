@@ -32,12 +32,24 @@ export class CalculadoraViajeComponent
       {
         this.tiempoEstimadoViaje = this.datos.distancia / this.velocidadPromedio;
         this.costoTotal = (this.datos.distancia /this.datos.consumo) * this.datos.costoCombustible + this.datos.costoPeaje;
+        this.enviarTiempo.emit(this.tiempoEstimadoViaje); 
+
+        /* this.router.navigate(['/aviso-descanso/: this.tiempoEstimadoViaje']); */ 
+        this.router.navigate(['/aviso-descanso', this.tiempoEstimadoViaje]);
+        this.datos=[$event]; 
+        this.datos=[...this.datos]; 
+        if(this.tiempoEstimadoViaje > 12){
+          alert("Se recomienda realizar un descanso")
+        }
       }
-      
-      this.enviarTiempo.emit(this.tiempoEstimadoViaje); 
-      this.router.navigate(['/aviso-descanso/: this.tiempoEstimadoViaje']); 
-      this.datos=[$event]; 
-      this.datos=[...this.datos]; 
-    } 
+      else
+      {
+        alert("No se Permiten Campos Vacios")
+      }
+    }
+    
+    alerta(value:any) {
+      this.tiempoEstimadoViaje = value;
+      }
 }
 

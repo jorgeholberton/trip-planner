@@ -1,10 +1,11 @@
-  <div *ngFor="let item of datos">
+  <div *ngFor="let item of datos"> 
     
       <h2>Resultados del viaje</h2>
       <p>Distancia: {{ item.distancia }} km</p>
-      <p>Recorrido por galón: {{ item.consumo }} km/galón</p>
-      <p>Costo del galón de combustible: ${{ item.costoCombustible }}</p>
-      <p>Costo de peaje: ${{ item.costoPeaje }}</p>
+      <p>Kilometros por galón: {{ item.consumo }} </p>
+      <p>Costo del galón de combustible: ${{ item.costoCombustible | currency}}</p>
+      <p>Costo de peaje: ${{ item.costoPeaje |currency }}</p>
       <p>Tiempo estimado de viaje: {{ tiempoEstimadoViaje }} horas</p>
-      <p>Costo total del viaje: ${{ costoTotal }}</p> 
+      <p>Costo total del viaje: ${{ costoTotal | currency }}</p> 
+      <p>{{tiempoEstimadoViaje}}</p>
     </div>
