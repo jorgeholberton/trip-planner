@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from './core/material/material.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
+    MaterialModule,
     RouterModule.forRoot([
       {path:'viaje-input/:enviarDatos',component: ViajeInputComponent},
       {path:'calculadora-viaje/:event',component: CalculadoraViajeComponent},

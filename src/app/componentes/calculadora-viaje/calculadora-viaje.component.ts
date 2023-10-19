@@ -28,7 +28,7 @@ export class CalculadoraViajeComponent
   calcularViaje($event: any) 
   {   
      this.datos=$event; 
-     if (this.datos.distancia && this.datos.consumo && this.datos.costoCombustible && this.datos.costoPeaje)  
+     if (this.datos.distancia && this.datos.consumo && this.datos.costoCombustible)  
       {
         this.tiempoEstimadoViaje = this.datos.distancia / this.velocidadPromedio;
         this.costoTotal = (this.datos.distancia /this.datos.consumo) * this.datos.costoCombustible + this.datos.costoPeaje;
@@ -37,7 +37,10 @@ export class CalculadoraViajeComponent
         /* this.router.navigate(['/aviso-descanso/: this.tiempoEstimadoViaje']); */ 
         this.router.navigate(['/aviso-descanso', this.tiempoEstimadoViaje]);
         this.datos=[$event]; 
-        this.datos=[...this.datos]; 
+        localStorage.getItem('datos') ? JSON.parse(localStorage.getItem(this.datos)!):[];/*obtener el arreglo como cadena*/ 
+        this.datos=[...this.datos];
+       
+        localStorage.setItem('datos', JSON.stringify(this.datos));/*almacenar el arreglo como cadena*/
         if(this.tiempoEstimadoViaje > 12){
           alert("Se recomienda realizar un descanso")
         }

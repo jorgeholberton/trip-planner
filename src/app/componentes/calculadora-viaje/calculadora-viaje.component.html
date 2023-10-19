@@ -1,11 +1,18 @@
-  <div *ngFor="let item of datos"> 
-    
-      <h2>Resultados del viaje</h2>
-      <p>Distancia: {{ item.distancia }} km</p>
-      <p>Kilometros por galón: {{ item.consumo }} </p>
-      <p>Costo del galón de combustible: ${{ item.costoCombustible | currency}}</p>
-      <p>Costo de peaje: ${{ item.costoPeaje |currency }}</p>
-      <p>Tiempo estimado de viaje: {{ tiempoEstimadoViaje }} horas</p>
-      <p>Costo total del viaje: ${{ costoTotal | currency }}</p> 
-      <p>{{tiempoEstimadoViaje}}</p>
-    </div>
+<div class="center">
+  <mat-card>
+      <div *ngFor="let item of datos">
+        <h2>Resultados del viaje</h2>
+        <p>Distancia: {{ item.distancia }} km</p>
+        <p>Kilometros por galón: {{ item.consumo }}</p>
+        <p>
+          Costo del galón de combustible: {{ item.costoCombustible | currency }}
+        </p>
+        <p>Costo de peaje: {{ item.costoPeaje | currency }}</p>
+        <p>
+          Tiempo estimado de viaje:
+          {{ tiempoEstimadoViaje | number : "1.0-2" }} horas
+        </p>
+        <p>Costo total del viaje: {{ costoTotal | currency }}</p>
+      </div>
+  </mat-card>
+</div>

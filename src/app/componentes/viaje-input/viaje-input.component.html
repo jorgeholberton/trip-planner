@@ -1,25 +1,46 @@
-
+<div class="center">
+  <mat-card-header>
 <div>
-    <h2>Introduce los datos del viaje</h2>
-    <form (submit)="redatosViaje()">
-      <label for="distancia">Distancia en kilómetros:</label>
-      <input type="number" id="distancia" [(ngModel)]="distancia" name="distancia" required>
-      <br><br>
-      
-      <label for="consumo">Kilómetros por galón de combustible:</label>
-      <input type="number" id="consumo" [(ngModel)]="consumo" name="consumo" required>
-      <br><br>
-      
-      <label for="costoCombustible">Costo del galón de combustible:</label>
-      <input type="number" id="costoCombustible" [(ngModel)]="costoCombustible" name="costoCombustible" required>
-      <br><br>
-      
-      <label for="costoPeaje">Costo de cada peaje:</label>
-      <input type="number" id="costoPeaje" [(ngModel)]="costoPeaje" name="costoPeaje" required>
-      <br><br>
-      
-      <button type="submit">Calcular</button>
-    </form>
+  <h2>Introduce los datos del viaje</h2>
+  <br>
+  <label for="costoPeaje">Costo de cada peaje:</label>
+    <input type="number" placeholder="Introduce el valor del peaje"  #nuevoValor id="costoPeaje" [(ngModel)]="costoPeaje" name="costoPeaje" required>
+    <div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="agregarValor(nuevoValor.value)">Agregar Peaje</button>
+    </div>
   </div>
-  <br><br>
-  <app-calculadora-viaje></app-calculadora-viaje>
+</mat-card-header>
+<br>
+
+<mat-card-content>
+  <form (submit)="redatosViaje()">
+    <label for="distancia">Distancia en kilómetros:</label>
+    <input type="number" id="distancia" [(ngModel)]="distancia" name="distancia" required>
+    <br><br>
+    
+    <label for="consumo">Kilómetros por galón de combustible:</label>
+    <input type="number" id="consumo" [(ngModel)]="consumo" name="consumo" required>
+    <br><br>
+    
+    <label for="costoCombustible">Costo del galón de combustible:</label>
+    <input type="number" id="costoCombustible" [(ngModel)]="costoCombustible" name="costoCombustible" required>
+    <br><br><br>
+
+    <button mat-raised-button color="primary" type="submit" [routerLink]="['/calculadora-viaje/:datosViaje']">Calcular</button>
+  </form>
+</mat-card-content>
+
+
+  <br>
+<mat-card-content>
+    <h3>Valores por Peaje</h3>
+  </mat-card-content>
+
+<mat-card-content>
+    <ul>
+      <li *ngFor="let valor of peajes">{{ valor }}</li>
+    </ul>
+  </mat-card-content>
+  </div>
+<!-- componente a mostrar el resultado -->
+<app-calculadora-viaje></app-calculadora-viaje> 
